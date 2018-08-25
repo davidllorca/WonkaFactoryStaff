@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-kapt'
+
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -36,5 +38,5 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:${versions.retrofitVersion}"
 
     implementation "com.google.dagger:dagger:${versions.daggerVersion}"
-    annotationProcessor "com.google.dagger:dagger-compiler:${versions.daggerVersion}"
+    kapt "com.google.dagger:dagger-compiler:${versions.daggerVersion}"
 }
