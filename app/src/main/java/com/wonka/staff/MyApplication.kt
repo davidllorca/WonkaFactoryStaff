@@ -6,11 +6,13 @@ import com.wonka.staff.common.DaggerApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
+import javax.inject.Inject
 
 
 class MyApplication : Application(), HasActivityInjector {
 
-    private lateinit var mActivityInjector: DispatchingAndroidInjector<Activity>
+    @Inject
+    lateinit var mActivityInjector: DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
         super.onCreate()
