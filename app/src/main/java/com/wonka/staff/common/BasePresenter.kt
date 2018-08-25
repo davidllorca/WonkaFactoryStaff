@@ -12,7 +12,7 @@ open class BasePresenter<View> : BaseContract.Presenter<View> {
         mDisposables.addAll(*disposable)
     }
 
-    override fun dispose() {
+    final override fun dispose() {
         mDisposables.dispose()
     }
 
@@ -22,6 +22,7 @@ open class BasePresenter<View> : BaseContract.Presenter<View> {
 
     override fun dropView() {
         mView = null
+        dispose()
     }
 
 }

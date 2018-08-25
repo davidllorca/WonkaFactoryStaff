@@ -2,7 +2,7 @@ package com.wonka.staff.common
 
 import com.wonka.staff.GetWorkersResponse
 import com.wonka.staff.WorkerEntity
-import retrofit2.Call
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -13,9 +13,9 @@ import retrofit2.http.Query
 interface WonkaApi {
 
     @GET("napptilus/oompa-loompas")
-    fun getWorkers(@Query("page") page: Int = 1): Call<GetWorkersResponse>
+    fun getWorkers(@Query("page") page: Int = 1): Single<GetWorkersResponse>
 
     @GET("napptilus/oompa-loompas/{id}")
-    fun getWorker(@Path("id") id: Int): Call<WorkerEntity>
+    fun getWorker(@Path("id") id: Int): Single<WorkerEntity>
 
 }

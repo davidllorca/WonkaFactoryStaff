@@ -1,5 +1,6 @@
 package com.wonka.staff
 
+import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -8,11 +9,11 @@ class WorkerRepository @Inject constructor(private val remoteDataSource: RemoteD
 
     val cache: Map<Int, WorkerEntity> = HashMap()
 
-    override fun getWorkers(): List<WorkerEntity> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getWorkers(): Single<List<WorkerEntity>> {
+        return remoteDataSource.getWorkers()
     }
 
-    override fun getWorker(id: Int): WorkerEntity {
+    override fun getWorker(id: Int): Single<WorkerEntity> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

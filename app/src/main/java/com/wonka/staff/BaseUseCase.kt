@@ -1,7 +1,9 @@
 package com.wonka.staff
 
-abstract class BaseUseCase<in Params, out Results> {
+import io.reactivex.Single
 
-    abstract fun execute(params: Params): Results
+abstract class BaseUseCase<in Params, Results> {
+
+    abstract fun execute(params: Params): Single<Results>
 
 }

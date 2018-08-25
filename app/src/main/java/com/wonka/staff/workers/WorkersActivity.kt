@@ -20,6 +20,7 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View {
     override fun onResume() {
         super.onResume()
         presenter.attach(this)
+        presenter.loadWorkers()
     }
 
     override fun onStop() {
@@ -28,6 +29,5 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View {
     }
 
     override fun render(state: WorkersViewState) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

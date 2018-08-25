@@ -1,9 +1,11 @@
 package com.wonka.staff
 
+import io.reactivex.Single
+
 interface WorkersDataSource {
 
-    fun getWorkers(): List<WorkerEntity>
+    fun getWorkers(): Single<List<WorkerEntity>>
 
-    fun getWorker(id: Int): WorkerEntity
+    fun getWorker(id: Int): Single<WorkerEntity>
 
 }

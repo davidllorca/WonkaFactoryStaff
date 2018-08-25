@@ -1,12 +1,14 @@
 package com.wonka.staff.workers
 
+import com.wonka.staff.common.ActivityScope
+import dagger.Binds
 import dagger.Module
 
 @Module
 abstract class WorkersModule {
 
-    // Todo add dependencies of Activities. Scope this?
+    @ActivityScope
+    @Binds
+    abstract fun bindWorkersPresenter(presenter: WorkersPresenter): WorkersContract.Presenter
 
-    //@Binds
-    //abstract fun bindWorkersPresenter(presenter: WorkerPresenter): WorkersContract.Presenter
 }

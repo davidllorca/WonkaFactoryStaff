@@ -13,11 +13,11 @@ data class WorkerEntity(
         @SerializedName("height") val height: Int = 0,
         @SerializedName("country") val country: String = "",
         @SerializedName("age") val age: Int = 0,
-        @SerializedName("favorite") val favorite: Favorite = Favorite(),
+        @SerializedName("favorite") val favorite: FavoriteEntity = FavoriteEntity(),
         @SerializedName("gender") val gender: String = "",
         @SerializedName("email") val email: String = "")
 
-data class Favorite(
+data class FavoriteEntity(
         @SerializedName("color") val color: String = "",
         @SerializedName("food") val food: String = "",
         @SerializedName("random_string") val randomString: String = "",

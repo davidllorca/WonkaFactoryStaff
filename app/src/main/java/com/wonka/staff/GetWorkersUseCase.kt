@@ -1,11 +1,20 @@
 package com.wonka.staff
 
-class GetWorkersUseCase(
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
+
+class GetWorkersUseCase @Inject constructor(
         private val repository: WorkerRepository
 ) : BaseUseCase<GetWorkersUseCase.Params, GetWorkersUseCase.Results>() {
 
-    override fun execute(params: Params): Results {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun execute(params: Params): Single<Results> {
+        return repository.getWorkers()
+                .map { t: List<WorkerEntity> -> Results(t) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+
     }
 
     data class Params(val page: Int)
