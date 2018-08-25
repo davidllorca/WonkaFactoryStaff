@@ -4,7 +4,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class WorkersRepository @Inject constructor(private val remoteDataSource: RemoteDataSource) : WorkersDataSource {
+class WorkerRepository @Inject constructor(private val remoteDataSource: RemoteDataSource) : WorkersDataSource {
 
     val cache: Map<Int, WorkerEntity> = HashMap()
 
