@@ -6,5 +6,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     (ApplicationModule::class),
-    (NetworkingModule::class)])
+    (NetworkingModule::class),
+    (WonkaApiModule::class)])
 interface ApplicationComponent

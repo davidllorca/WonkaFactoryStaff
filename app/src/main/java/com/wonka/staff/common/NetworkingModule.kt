@@ -7,6 +7,9 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+/**
+ * Module responsible to provide HTTP client implementation.
+ */
 @Module
 class NetworkingModule {
 
