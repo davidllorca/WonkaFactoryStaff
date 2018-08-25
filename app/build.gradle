@@ -34,9 +34,12 @@ dependencies {
 
     implementation "com.android.support.constraint:constraint-layout:${versions.constraintLayoutVersion}"
 
+    // Retrofit
     implementation "com.squareup.retrofit2:retrofit:${versions.retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${versions.retrofitVersion}"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofitVersion}"
 
+    // Dagger
     implementation "com.google.dagger:dagger:${versions.daggerVersion}"
     kapt "com.google.dagger:dagger-compiler:${versions.daggerVersion}"
 }
