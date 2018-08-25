@@ -2,6 +2,8 @@ package com.wonka.staff.common
 
 import android.app.Application
 import com.wonka.staff.MyApplication
+import com.wonka.staff.data.di.NetworkingModule
+import com.wonka.staff.ui.di.ActivityBindingModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule

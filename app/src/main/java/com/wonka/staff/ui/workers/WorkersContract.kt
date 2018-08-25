@@ -1,6 +1,6 @@
-package com.wonka.staff.workers
+package com.wonka.staff.ui.workers
 
-import com.wonka.staff.common.BaseContract
+import com.wonka.staff.ui.base.BaseContract
 
 interface WorkersContract {
 

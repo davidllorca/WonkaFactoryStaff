@@ -1,6 +1,6 @@
-package com.wonka.staff
+package com.wonka.staff.data.remote
 
-import com.wonka.staff.common.WonkaApi
+import com.wonka.staff.data.WorkersDataSource
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton

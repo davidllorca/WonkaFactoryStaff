@@ -1,4 +1,4 @@
-package com.wonka.staff
+package com.wonka.staff.data.remote
 
 import com.google.gson.annotations.SerializedName
 

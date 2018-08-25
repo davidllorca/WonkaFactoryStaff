@@ -1,7 +1,5 @@
-package com.wonka.staff.common
+package com.wonka.staff.data.remote
 
-import com.wonka.staff.GetWorkersResponse
-import com.wonka.staff.WorkerEntity
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -1,4 +1,4 @@
-package com.wonka.staff.workers
+package com.wonka.staff.ui.workers
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package com.wonka.staff.common
+package com.wonka.staff.ui.base
 
 import io.reactivex.disposables.Disposable
 

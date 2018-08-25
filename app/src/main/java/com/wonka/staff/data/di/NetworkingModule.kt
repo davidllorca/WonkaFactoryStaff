@@ -1,5 +1,6 @@
-package com.wonka.staff.common
+package com.wonka.staff.data.di
 
+import com.wonka.staff.data.remote.WonkaApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

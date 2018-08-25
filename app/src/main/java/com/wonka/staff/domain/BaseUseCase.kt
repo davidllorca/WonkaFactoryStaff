@@ -1,4 +1,4 @@
-package com.wonka.staff
+package com.wonka.staff.domain
 
 import io.reactivex.Single
 

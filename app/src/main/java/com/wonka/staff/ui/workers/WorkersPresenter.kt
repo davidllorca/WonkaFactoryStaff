@@ -1,9 +1,9 @@
-package com.wonka.staff.workers
+package com.wonka.staff.ui.workers
 
 import android.util.Log
-import com.wonka.staff.GetWorkersUseCase
-import com.wonka.staff.common.ActivityScope
-import com.wonka.staff.common.BasePresenter
+import com.wonka.staff.domain.GetWorkersUseCase
+import com.wonka.staff.ui.base.BasePresenter
+import com.wonka.staff.ui.di.ActivityScope
 import javax.inject.Inject
 
 @ActivityScope
@@ -20,4 +20,3 @@ class WorkersPresenter @Inject constructor(
 
 }
 
-class WorkersViewState

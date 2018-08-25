@@ -1,5 +1,6 @@
-package com.wonka.staff
+package com.wonka.staff.data
 
+import com.wonka.staff.data.remote.WorkerEntity
 import io.reactivex.Single
 
 interface WorkersDataSource {

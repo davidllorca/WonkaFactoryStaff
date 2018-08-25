@@ -1,5 +1,7 @@
-package com.wonka.staff
+package com.wonka.staff.domain
 
+import com.wonka.staff.data.WorkerRepository
+import com.wonka.staff.data.remote.WorkerEntity
 import io.reactivex.Single
 
 class GetWorkerUseCase(

@@ -1,5 +1,7 @@
-package com.wonka.staff
+package com.wonka.staff.data
 
+import com.wonka.staff.data.remote.RemoteDataSource
+import com.wonka.staff.data.remote.WorkerEntity
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
