@@ -5,6 +5,7 @@ import com.wonka.staff.common.ApplicationComponent
 import com.wonka.staff.common.ApplicationModule
 import com.wonka.staff.common.DaggerApplicationComponent
 
+
 class MyApplication : Application() {
 
     private lateinit var mApplicationComponent: ApplicationComponent
