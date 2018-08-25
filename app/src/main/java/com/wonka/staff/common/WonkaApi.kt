@@ -1,6 +1,7 @@
 package com.wonka.staff.common
 
 import com.wonka.staff.GetWorkersResponse
+import com.wonka.staff.WorkerEntity
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,6 +16,6 @@ interface WonkaApi {
     fun getWorkers(@Query("page") page: Int = 1): Call<GetWorkersResponse>
 
     @GET("napptilus/oompa-loompas/{id}")
-    fun getWorker(@Path("id") id: Int): Call<GetWorkersResponse.Worker>
+    fun getWorker(@Path("id") id: Int): Call<WorkerEntity>
 
 }
