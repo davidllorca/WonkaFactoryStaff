@@ -18,7 +18,7 @@ class WorkerRepository @Inject constructor(private val remoteDataSource: RemoteD
     }
 
     override fun getWorker(id: Int): Single<WorkerDetailData> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return remoteDataSource.getWorker(id)
     }
 
 }

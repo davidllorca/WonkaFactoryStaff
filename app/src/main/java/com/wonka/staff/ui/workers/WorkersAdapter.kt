@@ -9,7 +9,12 @@ import com.wonka.staff.domain.model.Worker
 import com.wonka.staff.ui.base.ImageLoader
 import kotlinx.android.synthetic.main.item_worker.view.*
 
-class WorkersAdapter(private val imageLoader: ImageLoader) : RecyclerView.Adapter<WorkersAdapter.ViewHolder>() {
+class WorkersAdapter(private val imageLoader: ImageLoader,
+                     private val listener: Listener) : RecyclerView.Adapter<WorkersAdapter.ViewHolder>() {
+
+    interface Listener {
+        fun onClickWorker(id: Int)
+    }
 
     private var items: MutableList<Worker> = ArrayList()
 
@@ -28,6 +33,7 @@ class WorkersAdapter(private val imageLoader: ImageLoader) : RecyclerView.Adapte
         val worker = items[position]
         imageLoader.loadImage(worker.image, viewHolder.image)
         viewHolder.name.text = "${worker.firstName} ${worker.lastName}"
+        viewHolder.itemView.setOnClickListener { listener.onClickWorker(worker.id) }
     }
 
     override fun getItemCount(): Int = items.size

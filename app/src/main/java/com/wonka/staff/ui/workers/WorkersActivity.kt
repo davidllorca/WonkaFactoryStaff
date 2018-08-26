@@ -6,11 +6,12 @@ import android.support.v7.widget.GridLayoutManager
 import android.widget.Toast
 import com.wonka.staff.R
 import com.wonka.staff.ui.base.ImageLoader
+import com.wonka.staff.ui.workerdetail.WorkerDetailActivity
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.content_workers.*
 import javax.inject.Inject
 
-class WorkersActivity : AppCompatActivity(), WorkersContract.View {
+class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapter.Listener {
 
     @Inject
     lateinit var presenter: WorkersContract.Presenter
@@ -25,7 +26,7 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View {
 
         rv_workers_list.let {
             it.layoutManager = GridLayoutManager(this, 2)
-            it.adapter = WorkersAdapter(imageLoader)
+            it.adapter = WorkersAdapter(imageLoader, this)
         }
     }
 
@@ -51,5 +52,10 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View {
                 Toast.makeText(this, state.error.message, Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onClickWorker(id: Int) {
+        WorkerDetailActivity.getCallingIntent(this, id)
+                .let { startActivity(it) }
     }
 }
