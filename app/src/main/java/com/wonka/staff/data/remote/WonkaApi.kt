@@ -10,10 +10,10 @@ import retrofit2.http.Query
  */
 interface WonkaApi {
 
-    @GET("napptilus/oompa-loompas")
+    @GET("/napptilus/oompa-loompas")
     fun getWorkers(@Query("page") page: Int = 1): Single<GetWorkersResponse>
 
-    @GET("napptilus/oompa-loompas/{id}")
-    fun getWorker(@Path("id") id: Int): Single<WorkerEntity>
+    @GET("/napptilus/oompa-loompas/{id}")
+    fun getWorker(@Path("id") id: Int): Single<WorkerDetailData>
 
 }

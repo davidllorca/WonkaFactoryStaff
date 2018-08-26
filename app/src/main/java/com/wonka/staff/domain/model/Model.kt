@@ -8,6 +8,18 @@ data class Worker(
         val id: Int = 0,
         val firstName: String = "",
         val lastName: String = "",
+        val image: String = "",
+        val profession: String = "",
+        val height: Int = 0,
+        val country: String = "",
+        val age: Int = 0,
+        val favorite: Favorite = Favorite(),
+        val gender: String = "",
+        val email: String = "")
+
+data class WorkerDetail(
+        val firstName: String = "",
+        val lastName: String = "",
         val description: String = "",
         val quota: String = "",
         val image: String = "",

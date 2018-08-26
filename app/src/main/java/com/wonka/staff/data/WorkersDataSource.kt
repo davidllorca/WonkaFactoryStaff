@@ -1,12 +1,13 @@
 package com.wonka.staff.data
 
-import com.wonka.staff.data.remote.WorkerEntity
+import com.wonka.staff.data.remote.WorkerData
+import com.wonka.staff.data.remote.WorkerDetailData
 import io.reactivex.Single
 
 interface WorkersDataSource {
 
-    fun getWorkers(): Single<List<WorkerEntity>>
+    fun getWorkers(): Single<List<WorkerData>>
 
-    fun getWorker(id: Int): Single<WorkerEntity>
+    fun getWorker(id: Int): Single<WorkerDetailData>
 
 }
