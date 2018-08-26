@@ -2,8 +2,11 @@ package com.wonka.staff.ui.workers
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.GridLayoutManager
+import android.widget.Toast
 import com.wonka.staff.R
 import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.content_workers.*
 import javax.inject.Inject
 
 class WorkersActivity : AppCompatActivity(), WorkersContract.View {
@@ -15,6 +18,11 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workers)
+
+        rv_workers_list.let {
+            it.layoutManager = GridLayoutManager(this, 2)
+            it.adapter = WorkersAdapter()
+        }
     }
 
     override fun onResume() {
@@ -29,5 +37,15 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View {
     }
 
     override fun render(state: WorkersViewState) {
+        when (state) {
+            is WorkersViewState.Loading -> {
+            }
+            is WorkersViewState.Results -> {
+                (rv_workers_list.adapter as WorkersAdapter).init(state.workers)
+            }
+            is WorkersViewState.Error -> {
+                Toast.makeText(this, state.error.message, Toast.LENGTH_LONG).show()
+            }
+        }
     }
 }
