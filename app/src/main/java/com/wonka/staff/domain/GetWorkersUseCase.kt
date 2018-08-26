@@ -16,7 +16,7 @@ class GetWorkersUseCase @Inject constructor(
 ) : BaseUseCase<GetWorkersUseCase.Params, GetWorkersUseCase.Results>() {
 
     override fun execute(params: Params): Single<Results> {
-        return repository.getWorkers()
+        return Single.fromCallable({ repository.getWorkers(params.page) })
                 .map { workersData -> Results(workersData.toWorkers()) }
                 .subscribeOn(workerThread)
                 .observeOn(deliveryScheduler)

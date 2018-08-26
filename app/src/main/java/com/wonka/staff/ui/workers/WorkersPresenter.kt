@@ -14,8 +14,14 @@ class WorkersPresenter @Inject constructor(
     override var mView: WorkersContract.View? = null
     override val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
 
+    private var paginationState: PaginationState
+
+    init {
+        paginationState = PaginationState(1, null)
+    }
+
     override fun loadWorkers() {
-        add(userCase.execute(GetWorkersUseCase.Params(1))
+        add(userCase.execute(GetWorkersUseCase.Params(paginationState.currentPage++))
                 .doOnSubscribe { mView?.renderViewSate(WorkersViewState.Loading(true)) }
                 .subscribe({ result -> mView?.renderViewSate(WorkersViewState.Results(result.workers)) },
                         { error ->
@@ -24,6 +30,5 @@ class WorkersPresenter @Inject constructor(
                         }))
     }
 
-
+    inner class PaginationState(var currentPage: Int, val totalPage: Int?)
 }
-

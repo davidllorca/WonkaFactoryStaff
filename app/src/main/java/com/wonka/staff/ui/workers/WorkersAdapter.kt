@@ -16,11 +16,12 @@ class WorkersAdapter(private val imageLoader: ImageLoader,
         fun onClickWorker(id: Int)
     }
 
-    private var items: MutableList<Worker> = ArrayList()
+    private var mDataSet: MutableList<Worker> = ArrayList()
 
-    fun init(workers: List<Worker>) {
-        items.addAll(workers)
-        notifyDataSetChanged()
+    fun appendAll(items: List<Worker>) {
+        val initPos = mDataSet.size
+        mDataSet.addAll(items)
+        notifyItemRangeInserted(initPos, items.size)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,13 +31,13 @@ class WorkersAdapter(private val imageLoader: ImageLoader,
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val worker = items[position]
+        val worker = mDataSet[position]
         imageLoader.loadImage(worker.image, viewHolder.image)
         viewHolder.name.text = "${worker.firstName} ${worker.lastName}"
         viewHolder.itemView.setOnClickListener { listener.onClickWorker(worker.id) }
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = mDataSet.size
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 

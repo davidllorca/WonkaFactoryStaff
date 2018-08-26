@@ -1,6 +1,6 @@
 package com.wonka.staff.data.remote
 
-import io.reactivex.Single
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -11,9 +11,9 @@ import retrofit2.http.Query
 interface WonkaApi {
 
     @GET("/napptilus/oompa-loompas")
-    fun getWorkers(@Query("page") page: Int = 1): Single<GetWorkersResponse>
+    fun getWorkersSync(@Query("page") page: Int = 1): Call<GetWorkersResponse>
 
     @GET("/napptilus/oompa-loompas/{id}")
-    fun getWorker(@Path("id") id: Int): Single<WorkerDetailData>
+    fun getWorker(@Path("id") id: Int): Call<WorkerDetailData>
 
 }
