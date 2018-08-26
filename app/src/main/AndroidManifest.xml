@@ -12,12 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.wonka.staff.ui.workers.WorkersActivity">
+        <activity android:name=".ui.workers.WorkersActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.workerdetail.DetailActivity"
+            android:label="@string/title_activity_detail"
+            android:parentActivityName=".ui.workers.WorkersActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.wonka.staff.ui.workers.WorkersActivity" />
         </activity>
     </application>
 

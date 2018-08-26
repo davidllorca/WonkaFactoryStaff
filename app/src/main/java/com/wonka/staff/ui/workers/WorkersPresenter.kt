@@ -15,7 +15,7 @@ class WorkersPresenter @Inject constructor(
     override fun loadWorkers() {
         add(userCase.execute(GetWorkersUseCase.Params(1))
                 .subscribe({ t1, t2 -> Log.d("Workers", "$t1 /// ${t1.workers}") }))
-        mView?.render(WorkersViewState())
+        mView?.render(WorkersViewState()) // TODO remind implement this
     }
 
 

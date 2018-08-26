@@ -23,7 +23,7 @@ class GetWorkersUseCase @Inject constructor(
     }
 
     data class Params(val page: Int)
-    data class Results(val workers: List<Worker>) // TODO create domain model classes
+    data class Results(val workers: List<Worker>)
 
 }
 
