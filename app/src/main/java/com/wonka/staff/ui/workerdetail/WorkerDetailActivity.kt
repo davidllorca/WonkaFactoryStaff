@@ -4,9 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import com.wonka.staff.R
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.content_detail.*
 import javax.inject.Inject
 
 class WorkerDetailActivity : AppCompatActivity(), WorkerDetailContract.View {
@@ -43,7 +45,27 @@ class WorkerDetailActivity : AppCompatActivity(), WorkerDetailContract.View {
     }
 
     override fun renderViewSate(state: WorkerDetailViewState) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        when (state) {
+            is WorkerDetailViewState.Loading -> {
+                //pb_workers.visibility = View.VISIBLE TODO
+            }
+            is WorkerDetailViewState.Result -> {
+                with(state.workerDetail) {
+                    tv_detail_description.text = this.description
+                    tv_detail_quota.text = this.quota
+                    tv_detail_profession.text = this.profession
+                    tv_detail_height.text = this.height.toString()
+                    tv_detail_country.text = this.country
+                    tv_detail_age.text = this.age.toString()
+                    tv_detail_gender.text = this.gender
+                    tv_detail_email.text = this.email
+                    // TODO display favorite
+                }
+            }
+            is WorkerDetailViewState.Error -> {
+                Toast.makeText(this, state.error.message, Toast.LENGTH_LONG).show()
+            }
+        }
     }
 
     companion object {

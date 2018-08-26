@@ -17,7 +17,7 @@ class WorkerDetailPresenter @Inject constructor(
 
     override fun loadWorkerDetail(id: Int) {
         add(useCase.execute(GetWorkerDetailUseCase.Params(id))
-                .subscribe({ worker -> mView?.renderViewSate(WorkerDetailViewState()) },
+                .subscribe({ result -> mView?.renderViewSate(WorkerDetailViewState.Result(result.worker)) },
                         { error -> Log.e("WorkerDetailPresenter", "Error getting details", error) }))
     }
 
