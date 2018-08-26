@@ -6,7 +6,7 @@ interface WorkersContract {
 
     interface View : BaseContract.View<WorkersViewState>
 
-    interface Presenter {
+    interface Presenter : BaseContract.Presenter<View> {
 
         fun loadWorkers()
 

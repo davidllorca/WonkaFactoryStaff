@@ -2,15 +2,17 @@ package com.wonka.staff.ui.workers
 
 import android.util.Log
 import com.wonka.staff.domain.GetWorkersUseCase
-import com.wonka.staff.ui.base.BasePresenter
 import com.wonka.staff.ui.di.ActivityScope
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 @ActivityScope
 class WorkersPresenter @Inject constructor(
         private val userCase: GetWorkersUseCase
-) : BasePresenter<WorkersContract.View>(),
-        WorkersContract.Presenter {
+) : WorkersContract.Presenter {
+
+    override var mView: WorkersContract.View? = null
+    override val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
 
     override fun loadWorkers() {
         add(userCase.execute(GetWorkersUseCase.Params(1))

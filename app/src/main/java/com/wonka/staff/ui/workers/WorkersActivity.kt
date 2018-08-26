@@ -9,7 +9,7 @@ import javax.inject.Inject
 class WorkersActivity : AppCompatActivity(), WorkersContract.View {
 
     @Inject
-    lateinit var presenter: WorkersPresenter
+    lateinit var presenter: WorkersContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

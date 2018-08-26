@@ -6,7 +6,7 @@ interface WorkerDetailContract {
 
     interface View : BaseContract.View<WorkerDetailViewState>
 
-    interface Presenter {
+    interface Presenter : BaseContract.Presenter<View> {
 
         fun loadWorkerDetail(id: Int)
 
