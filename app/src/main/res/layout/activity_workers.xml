@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_workers"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -21,5 +21,13 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_workers" />
+
+    <include
+        android:id="@+id/pb_workers"
+        layout="@layout/progress_bar_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>

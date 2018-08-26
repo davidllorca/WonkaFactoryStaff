@@ -16,6 +16,7 @@ class WorkersPresenter @Inject constructor(
 
     override fun loadWorkers() {
         add(userCase.execute(GetWorkersUseCase.Params(1))
+                .doOnSubscribe { mView?.renderViewSate(WorkersViewState.Loading(true)) }
                 .subscribe({ result -> mView?.renderViewSate(WorkersViewState.Results(result.workers)) },
                         { error ->
                             mView?.renderViewSate(WorkersViewState.Error(error))
