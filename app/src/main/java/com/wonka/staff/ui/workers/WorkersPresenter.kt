@@ -14,21 +14,36 @@ class WorkersPresenter @Inject constructor(
     override var mView: WorkersContract.View? = null
     override val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
 
-    private var paginationState: PaginationState
+    private var mPaginationState: PaginationState
+
+    private lateinit var mViewState: WorkersViewState
 
     init {
-        paginationState = PaginationState(1, null)
+        mPaginationState = PaginationState(1)
     }
 
     override fun loadWorkers() {
-        add(userCase.execute(GetWorkersUseCase.Params(paginationState.currentPage++))
-                .doOnSubscribe { mView?.renderViewSate(WorkersViewState.Loading(true)) }
-                .subscribe({ result -> mView?.renderViewSate(WorkersViewState.Results(result.workers)) },
-                        { error ->
-                            mView?.renderViewSate(WorkersViewState.Error(error))
-                            Log.e("WorkerPresenter", "Error getting workers list", error)
-                        }))
+        add(userCase.execute(GetWorkersUseCase.Params(mPaginationState.currentPage++))
+                .doOnSubscribe {
+                    mViewState = WorkersViewState.Loading(true)
+                    renderState()
+                }
+                .doAfterTerminate { renderState() }
+                .subscribe({ result ->
+                    mViewState = WorkersViewState.Results(result.workers)
+                }, { error ->
+                    mViewState = WorkersViewState.Error(error)
+                    Log.e("WorkerPresenter", "Error getting workers list", error)
+                }))
     }
 
-    inner class PaginationState(var currentPage: Int, val totalPage: Int?)
+    private fun renderState() {
+        mView?.renderViewSate(mViewState)
+    }
+
+
+    /**
+     * Save current state of paginated call.
+     */
+    inner class PaginationState(var currentPage: Int)
 }

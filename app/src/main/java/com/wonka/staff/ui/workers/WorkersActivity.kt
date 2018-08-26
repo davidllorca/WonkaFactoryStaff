@@ -23,8 +23,6 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
     @Inject
     lateinit var imageLoader: ImageLoader
 
-    // Implementation of ScrollListener with loading callback events.
-
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
@@ -47,10 +45,14 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
         presenter.loadWorkers()
     }
 
+    override fun onStart() {
+        super.onStart()
+        presenter.loadWorkers()
+
+    }
     override fun onResume() {
         super.onResume()
         presenter.attach(this)
-        presenter.loadWorkers()
     }
 
     override fun onStop() {
