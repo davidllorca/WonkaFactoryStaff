@@ -7,12 +7,13 @@ import com.wonka.staff.domain.model.WorkerDetail
 import com.wonka.staff.domain.model.toWorkerDetail
 import io.reactivex.Scheduler
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GetWorkerUseCase(
+class GetWorkerDetailUseCase @Inject constructor(
         private val repository: WorkerRepository,
         @WorkerScheduler private val workerThread: Scheduler,
         @DeliveryScheduler private val deliveryScheduler: Scheduler
-) : BaseUseCase<GetWorkerUseCase.Params, GetWorkerUseCase.Results>() {
+) : BaseUseCase<GetWorkerDetailUseCase.Params, GetWorkerDetailUseCase.Results>() {
 
     override fun execute(params: Params): Single<Results> {
         return repository.getWorker(params.id)

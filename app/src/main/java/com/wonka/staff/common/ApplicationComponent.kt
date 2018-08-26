@@ -5,6 +5,7 @@ import com.wonka.staff.MyApplication
 import com.wonka.staff.data.di.NetworkingModule
 import com.wonka.staff.domain.di.DomainModule
 import com.wonka.staff.ui.di.ActivityBindingModule
+import com.wonka.staff.ui.di.ImageLoaderModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -16,6 +17,7 @@ import javax.inject.Singleton
     (NetworkingModule::class),
     (AndroidInjectionModule::class),
     (ActivityBindingModule::class),
+    (ImageLoaderModule::class),
     (DomainModule::class)])
 interface ApplicationComponent {
 

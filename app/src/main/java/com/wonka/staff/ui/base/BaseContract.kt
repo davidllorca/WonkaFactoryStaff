@@ -43,7 +43,9 @@ class BaseContract {
     }
 
     interface View<in ViewState> {
-        fun render(state: ViewState)
+
+        fun renderViewSate(state: ViewState)
+
     }
 
 }

@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.wonka.staff.R
 import com.wonka.staff.domain.model.Worker
+import com.wonka.staff.ui.base.ImageLoader
 import kotlinx.android.synthetic.main.item_worker.view.*
 
-class WorkersAdapter : RecyclerView.Adapter<WorkersAdapter.ViewHolder>() {
+class WorkersAdapter(private val imageLoader: ImageLoader) : RecyclerView.Adapter<WorkersAdapter.ViewHolder>() {
 
     private var items: MutableList<Worker> = ArrayList()
 
@@ -25,6 +26,7 @@ class WorkersAdapter : RecyclerView.Adapter<WorkersAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val worker = items[position]
+        imageLoader.loadImage(worker.image, viewHolder.image)
         viewHolder.name.text = "${worker.firstName} ${worker.lastName}"
     }
 

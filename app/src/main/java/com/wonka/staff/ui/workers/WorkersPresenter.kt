@@ -16,9 +16,9 @@ class WorkersPresenter @Inject constructor(
 
     override fun loadWorkers() {
         add(userCase.execute(GetWorkersUseCase.Params(1))
-                .subscribe({ result -> mView?.render(WorkersViewState.Results(result.workers)) },
+                .subscribe({ result -> mView?.renderViewSate(WorkersViewState.Results(result.workers)) },
                         { error ->
-                            mView?.render(WorkersViewState.Error(error))
+                            mView?.renderViewSate(WorkersViewState.Error(error))
                             Log.e("WorkerPresenter", "Error getting workers list", error)
                         }))
     }
