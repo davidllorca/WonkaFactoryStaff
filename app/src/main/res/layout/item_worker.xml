@@ -26,6 +26,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Ompaa Loompa" />
+
+        <TextView
+            android:id="@+id/tv_worker_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Gender" />
+
+        <TextView
+            android:id="@+id/tv_worker_profession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Profession" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

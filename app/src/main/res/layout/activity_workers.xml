@@ -20,8 +20,26 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_workers" />
+    <include
+        layout="@layout/content_workers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?android:actionBarSize" />
 
+    <!-- Bottom Sheet -->
+    <include
+        android:id="@+id/layout_bottom_sheet"
+        layout="@layout/bottom_sheets_workers_filter" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:onClick="openFilterOptions"
+        android:src="@drawable/ic_filter_list_white_24dp"
+        app:layout_anchor="@+id/layout_bottom_sheet"
+        app:layout_anchorGravity="right|top" />
     <include
         android:id="@+id/pb_workers"
         layout="@layout/progress_bar_row"

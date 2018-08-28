@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">Staff</string>
     <string name="title_activity_detail">DetailActivity</string>
+
+    <string name="label_gender">Gender</string>
+    <string name="label_profession">Profession</string>
+
+    <string name="filter_male">Male</string>
+    <string name="filter_female">Female</string>
+
+    <string name="filter_developer">Developer</string>
+    <string name="filter_metal_worker">Metalworker</string>
+    <string name="filter_gemcutter">Gemcutter</string>
+    <string name="filter_medic">Medic</string>
+    <string name="filter_brewer">Brewer</string>
+    <string name="label_filters">Filters</string>
+
 </resources>

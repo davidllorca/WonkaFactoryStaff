@@ -28,19 +28,14 @@ abstract class EndlessRecyclerViewScrollListener(private var mLayoutManager: Rec
     // but first we check if we are waiting for the previous load to finish.
     override fun onScrolled(view: RecyclerView, dx: Int, dy: Int) {
         var lastVisibleItemPosition = 0
-        var firstVisibleItemPosition = 0
         val totalItemCount = mLayoutManager.itemCount
 
         if (mLayoutManager is GridLayoutManager) {
             lastVisibleItemPosition = (mLayoutManager as GridLayoutManager)
                     .findLastVisibleItemPosition()
-            firstVisibleItemPosition = (mLayoutManager as GridLayoutManager)
-                    .findFirstVisibleItemPosition()
         } else if (mLayoutManager is LinearLayoutManager) {
             lastVisibleItemPosition = (mLayoutManager as LinearLayoutManager)
                     .findLastVisibleItemPosition()
-            firstVisibleItemPosition = (mLayoutManager as LinearLayoutManager)
-                    .findFirstVisibleItemPosition()
         }
 
         // If the total item count is zero and the previous isn't, assume the

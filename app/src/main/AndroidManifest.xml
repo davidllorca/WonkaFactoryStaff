@@ -25,8 +25,7 @@
             android:name=".ui.workerdetail.WorkerDetailActivity"
             android:label="@string/title_activity_detail"
             android:parentActivityName=".ui.workers.WorkersActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.wonka.staff.ui.workers.WorkersActivity" />

@@ -2,6 +2,9 @@ package com.wonka.staff.data.remote
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Model contract with remote server data.
+ */
 data class WorkerData(
         @SerializedName("first_name") val firstName: String = "",
         @SerializedName("last_name") val lastName: String = "",

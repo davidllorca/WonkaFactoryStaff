@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_workers_filters"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:padding="@dimen/big_margin_horizontal"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="?android:actionBarSize"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/tv_filter_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_filters"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        app:layout_constraintBottom_toTopOf="@+id/tv_filter_label_gender"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_filter_label_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin_vertical"
+        android:layout_marginTop="@dimen/big_margin_vertical"
+        android:text="@string/label_gender"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintBottom_toTopOf="@id/chip_group_filter_gender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_filter_title" />
+
+    <android.support.design.chip.ChipGroup
+        android:id="@+id/chip_group_filter_gender"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/tv_filter_label_profession"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_filter_label_gender">
+
+        <android.support.design.chip.Chip
+            android:id="@+id/chip_filter_male"
+            style="@style/ChipSelectable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_male" />
+
+        <android.support.design.chip.Chip
+            android:id="@+id/chip_filter_female"
+            style="@style/ChipSelectable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_female" />
+
+    </android.support.design.chip.ChipGroup>
+
+    <android.support.design.chip.ChipGroup
+        android:id="@+id/chip_group_filter_profession"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_filter_label_profession">
+
+        <android.support.design.chip.Chip
+            android:id="@+id/chip_filter_developer"
+            style="@style/ChipSelectable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_developer" />
+
+        <android.support.design.chip.Chip
+            android:id="@+id/chip_filter_metal_worker"
+            style="@style/ChipSelectable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_metal_worker" />
+
+        <android.support.design.chip.Chip
+            android:id="@+id/chip_filter_gemcutter"
+            style="@style/ChipSelectable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_gemcutter" />
+
+        <android.support.design.chip.Chip
+            android:id="@+id/chip_filter_medic"
+            style="@style/ChipSelectable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_medic" />
+
+        <android.support.design.chip.Chip
+            android:id="@+id/chip_filter_brewer"
+            style="@style/ChipSelectable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_brewer" />
+
+    </android.support.design.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/tv_filter_label_profession"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_margin_vertical"
+        android:layout_marginTop="@dimen/big_margin_vertical"
+        android:text="@string/label_profession"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        app:layout_constraintBottom_toTopOf="@id/chip_group_filter_profession"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chip_group_filter_gender" />
+</android.support.constraint.ConstraintLayout>
