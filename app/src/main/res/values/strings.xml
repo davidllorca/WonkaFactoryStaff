@@ -1,18 +1,28 @@
 <resources>
     <string name="app_name">Staff</string>
-    <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_workers">Wonka\'s workers browser</string>
+    <string name="title_activity_worker_detail">DetailActivity</string>
+
+    <string name="label_filters">Filters</string>
 
     <string name="label_gender">Gender</string>
+
+    <string name="label_filter_male">Male</string>
+    <string name="label_filter_female">Female</string>
+    <string name="tag_filter_male">M</string>
+    <string name="tag_filter_female">F</string>
+
     <string name="label_profession">Profession</string>
+    <string name="label_filter_developer">Developer</string>
+    <string name="label_filter_metal_worker">Metalworker</string>
+    <string name="label_filter_gemcutter">Gemcutter</string>
+    <string name="label_filter_medic">Medic</string>
+    <string name="label_filter_brewer">Brewer</string>
+    <string name="tag_filter_developer">Developer</string>
+    <string name="tag_filter_metal_worker">Metalworker</string>
+    <string name="tag_filter_gemcutter">Gemcutter</string>
+    <string name="tag_filter_medic">Medic</string>
+    <string name="tag_filter_brewer">Brewer</string>
 
-    <string name="filter_male">Male</string>
-    <string name="filter_female">Female</string>
-
-    <string name="filter_developer">Developer</string>
-    <string name="filter_metal_worker">Metalworker</string>
-    <string name="filter_gemcutter">Gemcutter</string>
-    <string name="filter_medic">Medic</string>
-    <string name="filter_brewer">Brewer</string>
-    <string name="label_filters">Filters</string>
 
 </resources>

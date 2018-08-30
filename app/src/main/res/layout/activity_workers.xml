@@ -23,13 +23,13 @@
     <include
         layout="@layout/content_workers"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="?android:actionBarSize" />
 
     <!-- Bottom Sheet -->
     <include
         android:id="@+id/layout_bottom_sheet"
-        layout="@layout/bottom_sheets_workers_filter" />
+        layout="@layout/bottom_sheets_workers_filter"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -40,12 +40,5 @@
         android:src="@drawable/ic_filter_list_white_24dp"
         app:layout_anchor="@+id/layout_bottom_sheet"
         app:layout_anchorGravity="right|top" />
-    <include
-        android:id="@+id/pb_workers"
-        layout="@layout/progress_bar_row"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -14,6 +14,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.workers.WorkersActivity"
+            android:label="@string/title_activity_workers"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +24,7 @@
         </activity>
         <activity
             android:name=".ui.workerdetail.WorkerDetailActivity"
-            android:label="@string/title_activity_detail"
+            android:label="@string/title_activity_worker_detail"
             android:parentActivityName=".ui.workers.WorkersActivity"
             android:screenOrientation="portrait">
             <meta-data

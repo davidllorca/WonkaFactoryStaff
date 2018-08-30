@@ -5,9 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.wonka.staff.R
-import com.wonka.staff.domain.model.Worker
 import com.wonka.staff.ui.base.ImageLoader
 import kotlinx.android.synthetic.main.item_worker.view.*
+
+typealias ViewItem = WorkersContract.WorkerViewObject
 
 class WorkersAdapter(private val imageLoader: ImageLoader,
                      private val listener: Listener) : RecyclerView.Adapter<WorkersAdapter.ViewHolder>() {
@@ -16,10 +17,27 @@ class WorkersAdapter(private val imageLoader: ImageLoader,
         fun onClickWorker(id: Int)
     }
 
-    private var mOriginalDataSet: MutableList<Worker> = ArrayList()
-    private var mDataSet: MutableList<Worker> = ArrayList()
+    /**
+     * List of all original data.
+     */
+    private var mOriginalDataSet: MutableList<ViewItem> = ArrayList()
 
-    fun appendAll(items: List<Worker>) {
+    /**
+     * List of data showed at UI by the adapter.
+     */
+    private var mDataSet: MutableList<ViewItem> = ArrayList()
+
+    /**
+     * True is there is any filtered active search, false otherwise.
+     */
+    var isFiltered: Boolean = false
+
+    /**
+     * Set true at construction time.
+     */
+    var isInitialized: Boolean = true
+
+    fun appendAll(items: List<ViewItem>) {
         val initPos = mDataSet.size
         mDataSet.addAll(items)
         mOriginalDataSet = mDataSet.toMutableList()
@@ -34,8 +52,8 @@ class WorkersAdapter(private val imageLoader: ImageLoader,
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val worker = mDataSet[position]
-        imageLoader.loadImage(worker.image, viewHolder.image)
-        viewHolder.name.text = "${worker.firstName} ${worker.lastName}"
+        imageLoader.loadImage(worker.avatarUrl, viewHolder.image)
+        viewHolder.name.text = worker.name
         viewHolder.gender.text = worker.gender
         viewHolder.profession.text = worker.profession
         viewHolder.itemView.setOnClickListener { listener.onClickWorker(worker.id) }
@@ -48,14 +66,24 @@ class WorkersAdapter(private val imageLoader: ImageLoader,
         mDataSet = mOriginalDataSet.toMutableList()
 
         // If there no active filter it will show original data
-        if (filters.areActive()) {
+        if (filters.areAnyActive()) {
             // If filter of key is not active remove item from visible set
             mOriginalDataSet.forEach {
-                if (filters.entries[it.profession] == false) {
+                // If no one key of group is selected it consider full join query
+                if(filters.areGenderFilterActive() && filters.genderFilter[it.gender] == false) {
                     mDataSet.remove(it)
+                    return@forEach
+                }
+
+                if(filters.areProfessionFilterActive() && filters.professionFilter[it.profession] == false){
+                    mDataSet.remove(it)
+                    return@forEach
                 }
             }
         }
+        // Set filtered flag
+        isFiltered = filters.areAnyActive()
+
         notifyDataSetChanged()
     }
 
@@ -71,11 +99,23 @@ class WorkersAdapter(private val imageLoader: ImageLoader,
     /**
      * Contains a set of filter values with its current checked/unchecked state.
      */
-    data class FiltersState(val entries: Map<String, Boolean>) {
+    data class FiltersState(var genderFilter: Map<String, Boolean>,
+                            var professionFilter: Map<String, Boolean>) {
 
         /**
          * Returns true if there are any entry checked as true.
          */
-        fun areActive(): Boolean = entries.values.contains(true)
+        fun areAnyActive(): Boolean = areGenderFilterActive() || areProfessionFilterActive()
+
+        /**
+         * Returns true if there are any entry of checked of Gender options as true, false otherwise.
+         */
+        fun areGenderFilterActive(): Boolean = genderFilter.values.contains(true)
+
+        /**
+         * Returns true if there are any entry checked of Profession options as true, false otherwise.
+         */
+        fun areProfessionFilterActive(): Boolean = professionFilter.values.contains(true)
+
     }
 }

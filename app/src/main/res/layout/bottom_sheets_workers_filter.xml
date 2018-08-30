@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
+    android:clickable="true"
+    android:focusable="true"
+    android:onClick="openFilterOptions"
     android:orientation="vertical"
     android:padding="@dimen/big_margin_horizontal"
     app:behavior_hideable="true"
@@ -46,14 +49,16 @@
             style="@style/ChipSelectable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/filter_male" />
+            android:tag="@string/tag_filter_male"
+            android:text="@string/label_filter_male" />
 
         <android.support.design.chip.Chip
             android:id="@+id/chip_filter_female"
             style="@style/ChipSelectable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/filter_female" />
+            android:tag="@string/tag_filter_female"
+            android:text="@string/label_filter_female" />
 
     </android.support.design.chip.ChipGroup>
 
@@ -71,35 +76,40 @@
             style="@style/ChipSelectable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/filter_developer" />
+            android:tag="@string/tag_filter_developer"
+            android:text="@string/label_filter_developer" />
 
         <android.support.design.chip.Chip
             android:id="@+id/chip_filter_metal_worker"
             style="@style/ChipSelectable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/filter_metal_worker" />
+            android:tag="@string/tag_filter_metal_worker"
+            android:text="@string/label_filter_metal_worker" />
 
         <android.support.design.chip.Chip
             android:id="@+id/chip_filter_gemcutter"
             style="@style/ChipSelectable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/filter_gemcutter" />
+            android:tag="@string/tag_filter_gemcutter"
+            android:text="@string/label_filter_gemcutter" />
 
         <android.support.design.chip.Chip
             android:id="@+id/chip_filter_medic"
             style="@style/ChipSelectable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/filter_medic" />
+            android:tag="@string/tag_filter_medic"
+            android:text="@string/label_filter_medic" />
 
         <android.support.design.chip.Chip
             android:id="@+id/chip_filter_brewer"
             style="@style/ChipSelectable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/filter_brewer" />
+            android:tag="@string/tag_filter_brewer"
+            android:text="@string/label_filter_brewer" />
 
     </android.support.design.chip.ChipGroup>
 

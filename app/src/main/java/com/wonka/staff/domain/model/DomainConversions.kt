@@ -5,7 +5,7 @@ import com.wonka.staff.data.remote.WorkerData
 import com.wonka.staff.data.remote.WorkerDetailData
 
 /**
- *  Conversion utilities from data layer models to domain layer models
+ *  Conversion utilities from data layer models to domain layer models.
  */
 fun Iterable<WorkerData>.toWorkers(): List<Worker> = map {
     Worker(

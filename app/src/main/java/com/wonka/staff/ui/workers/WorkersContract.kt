@@ -15,4 +15,14 @@ interface WorkersContract {
 
     }
 
+    /**
+     * Model contract with the View.
+     */
+    interface WorkerViewObject {
+        val id: Int
+        val name: String
+        val gender: String
+        val profession: String
+        val avatarUrl: String
+    }
 }

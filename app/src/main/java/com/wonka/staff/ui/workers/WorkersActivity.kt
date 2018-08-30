@@ -1,7 +1,6 @@
 package com.wonka.staff.ui.workers
 
 import android.os.Bundle
-import android.support.design.chip.Chip
 import android.support.design.widget.BottomSheetBehavior
 import android.support.design.widget.BottomSheetBehavior.*
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
+import android.widget.CheckBox
 import android.widget.Toast
 import com.wonka.staff.R
 import com.wonka.staff.ui.base.EndlessRecyclerViewScrollListener
@@ -29,6 +29,7 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
     @Inject
     lateinit var imageLoader: ImageLoader
 
+    lateinit var adapter: WorkersAdapter
     lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,32 +37,26 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workers)
 
+        adapter = WorkersAdapter(imageLoader, this)
         rv_workers_list.let {
             it.layoutManager = GridLayoutManager(this, N_GRID_COLUMNS)
-            it.adapter = WorkersAdapter(imageLoader, this)
+            it.adapter = adapter
 
             val scrollListener = object : EndlessRecyclerViewScrollListener(it.layoutManager!!) {
                 override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
-                    loadNextData(page)
+                    loadNextData()
                 }
             }
             it.addOnScrollListener(scrollListener)
         }
+
         bottomSheetBehavior = BottomSheetBehavior.from(layout_bottom_sheet)
         bottomSheetBehavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 Log.d("Filter", "$newState")
                 when (newState) {
-                    BottomSheetBehavior.STATE_HIDDEN -> {
-                    }
-                    BottomSheetBehavior.STATE_EXPANDED -> {
-                    }
                     BottomSheetBehavior.STATE_COLLAPSED -> {
                         applyFilters()
-                    }
-                    BottomSheetBehavior.STATE_DRAGGING -> {
-                    }
-                    BottomSheetBehavior.STATE_SETTLING -> {
                     }
                 }
             }
@@ -86,16 +81,20 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
     }
 
     private fun applyFilters() {
-        (rv_workers_list.adapter as WorkersAdapter).applyFilters(getActiveFilters())
+        var filters = getCurrentFilters()
+        adapter.applyFilters(filters)
     }
 
-    private fun getActiveFilters(): WorkersAdapter.FiltersState {
-        val extractState: (Chip) -> Pair<String, Boolean> = { it.text.toString() to it.isChecked }
+    private fun getCurrentFilters(): WorkersAdapter.FiltersState {
+        val extractState: (CheckBox) -> Pair<String, Boolean> = { it.tag.toString() to it.isChecked }
 
         return WorkersAdapter.FiltersState(
+                // Gender options
                 mapOf(
                         with(chip_filter_male) { extractState(this) },
-                        with(chip_filter_female) { extractState(this) },
+                        with(chip_filter_female) { extractState(this) }),
+                // Profession options
+                mapOf(
                         with(chip_filter_developer) { extractState(this) },
                         with(chip_filter_metal_worker) { extractState(this) },
                         with(chip_filter_gemcutter) { extractState(this) },
@@ -103,20 +102,19 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
                         with(chip_filter_brewer) { extractState(this) }))
     }
 
-    private fun loadNextData(page: Int) { // TODO REMOVE PAGE?
-        //presenter.loadWorkers()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        pb_workers.visibility = View.VISIBLE // MOVE TO VIEW INTERFACE
-        presenter.loadWorkers()
-
+    private fun loadNextData() { // TODO REMOVE PAGE?
+        // If user is user filter options pagination will be paused
+        if (!adapter.isFiltered) {
+            presenter.loadWorkers()
+        }
     }
 
     override fun onResume() {
         super.onResume()
         presenter.attach(this)
+        if(adapter.isInitialized) {
+            loadNextData()
+        }
     }
 
     override fun onStop() {
@@ -127,16 +125,22 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
     override fun renderViewSate(state: WorkersViewState) {
         when (state) {
             is WorkersViewState.Loading -> {
-                pb_workers.visibility = View.VISIBLE
+                showLoadingVisibility(true)
             }
             is WorkersViewState.Results -> {
-                pb_workers.visibility = View.GONE
+                showLoadingVisibility(false)
                 (rv_workers_list.adapter as WorkersAdapter).appendAll(state.workers)
             }
             is WorkersViewState.Error -> {
-                pb_workers.visibility = View.GONE
+                showLoadingVisibility(false)
                 Toast.makeText(this, state.error.message, Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    private fun showLoadingVisibility(visible: Boolean) {
+        pb_workers.visibility.let {
+           if(visible) View.VISIBLE else View.GONE
         }
     }
 

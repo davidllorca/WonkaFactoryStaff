@@ -3,6 +3,7 @@ package com.wonka.staff.ui.workers
 import android.util.Log
 import com.wonka.staff.domain.GetWorkersUseCase
 import com.wonka.staff.ui.di.ActivityScope
+import com.wonka.staff.ui.model.toWorkersView
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -19,18 +20,19 @@ class WorkersPresenter @Inject constructor(
     private lateinit var mViewState: WorkersViewState
 
     init {
-        mPaginationState = PaginationState(1)
+        // First state at instance creation time.
+        mPaginationState = PaginationState(0)
     }
 
     override fun loadWorkers() {
         add(userCase.execute(GetWorkersUseCase.Params(mPaginationState.currentPage++))
                 .doOnSubscribe {
-                    mViewState = WorkersViewState.Loading(true)
+                    mViewState = WorkersViewState.Loading()
                     renderState()
                 }
                 .doAfterTerminate { renderState() }
                 .subscribe({ result ->
-                    mViewState = WorkersViewState.Results(result.workers)
+                    mViewState = WorkersViewState.Results(result.workers.toWorkersView())
                 }, { error ->
                     mViewState = WorkersViewState.Error(error)
                     Log.e("WorkerPresenter", "Error getting workers list", error)
@@ -40,7 +42,6 @@ class WorkersPresenter @Inject constructor(
     private fun renderState() {
         mView?.renderViewSate(mViewState)
     }
-
 
     /**
      * Save current state of paginated call.
