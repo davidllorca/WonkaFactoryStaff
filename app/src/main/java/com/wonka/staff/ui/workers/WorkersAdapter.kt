@@ -54,7 +54,10 @@ class WorkersAdapter(private val imageLoader: ImageLoader,
         val worker = mDataSet[position]
         imageLoader.loadImage(worker.avatarUrl, viewHolder.image)
         viewHolder.name.text = worker.name
-        viewHolder.gender.text = worker.gender
+        viewHolder.gender.text =
+            viewHolder.itemView.context.getText(
+                    if (worker.gender == "F") R.string.label_filter_female
+                    else R.string.label_filter_male)
         viewHolder.profession.text = worker.profession
         viewHolder.itemView.setOnClickListener { listener.onClickWorker(worker.id) }
     }
@@ -70,12 +73,12 @@ class WorkersAdapter(private val imageLoader: ImageLoader,
             // If filter of key is not active remove item from visible set
             mOriginalDataSet.forEach {
                 // If no one key of group is selected it consider full join query
-                if(filters.areGenderFilterActive() && filters.genderFilter[it.gender] == false) {
+                if (filters.areGenderFilterActive() && filters.genderFilter[it.gender] == false) {
                     mDataSet.remove(it)
                     return@forEach
                 }
 
-                if(filters.areProfessionFilterActive() && filters.professionFilter[it.profession] == false){
+                if (filters.areProfessionFilterActive() && filters.professionFilter[it.profession] == false) {
                     mDataSet.remove(it)
                     return@forEach
                 }
