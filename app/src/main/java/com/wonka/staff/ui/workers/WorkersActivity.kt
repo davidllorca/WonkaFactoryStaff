@@ -139,9 +139,7 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
     }
 
     private fun showLoadingVisibility(visible: Boolean) {
-        pb_workers.visibility.let {
-           if(visible) View.VISIBLE else View.GONE
-        }
+        pb_workers.visibility = if(visible) View.VISIBLE else View.GONE
     }
 
     override fun onClickWorker(id: Int) {

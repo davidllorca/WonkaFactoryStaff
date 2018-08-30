@@ -1,12 +1,11 @@
 <resources>
     <string name="app_name">Staff</string>
-    <string name="title_activity_workers">Wonka\'s workers browser</string>
+    <string name="title_activity_workers">Wonka\'s worker browser</string>
     <string name="title_activity_worker_detail">DetailActivity</string>
 
     <string name="label_filters">Filters</string>
 
     <string name="label_gender">Gender</string>
-
     <string name="label_filter_male">Male</string>
     <string name="label_filter_female">Female</string>
     <string name="tag_filter_male">M</string>
