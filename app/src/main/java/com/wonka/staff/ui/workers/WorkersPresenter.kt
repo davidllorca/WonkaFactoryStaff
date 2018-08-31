@@ -35,7 +35,7 @@ class WorkersPresenter @Inject constructor(
                     mViewState = WorkersViewState.Results(result.workers.toWorkersView())
                 }, { error ->
                     mViewState = WorkersViewState.Error(error)
-                    Log.e("WorkerPresenter", "Error getting workers list", error)
+                    Log.e("WorkersPresenter", "Error getting workers list", error)
                 }))
     }
 

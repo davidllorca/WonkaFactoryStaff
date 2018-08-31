@@ -16,10 +16,24 @@ class WorkerDetailPresenter @Inject constructor(
     override var mView: WorkerDetailContract.View? = null
     override val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
 
+    private lateinit var mViewState: WorkerDetailViewState
+
     override fun loadWorkerDetail(id: Int) {
         add(useCase.execute(GetWorkerDetailUseCase.Params(id))
-                .subscribe({ result -> mView?.renderViewSate(WorkerDetailViewState.Result(result.worker.toWorkerDetailView())) },
-                        { error -> Log.e("WorkerDetailPresenter", "Error getting details", error) }))
+                .doOnSubscribe {
+                    mViewState = WorkerDetailViewState.Loading()
+                    renderState()
+                }
+                .doAfterTerminate { renderState() }
+                .subscribe({ result ->
+                    mViewState = WorkerDetailViewState.Result(result.worker.toWorkerDetailView())
+                }, { error ->
+                    mViewState = WorkerDetailViewState.Error(error)
+                    Log.e("WorkerDetailPresenter", "Error getting details", error) }))
+    }
+
+    private fun renderState() {
+        mView?.renderViewSate(mViewState)
     }
 
 }
