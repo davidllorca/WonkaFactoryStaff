@@ -57,4 +57,11 @@ dependencies {
     // Picasso
     implementation "com.squareup.picasso:picasso:${versions.picassoVersion}"
 
+    // TEST
+    testImplementation "junit:junit:${versions.junitVersion}"
+    testImplementation "org.mockito:mockito-core:${versions.mockitoVersion}"
+    testImplementation "org.hamcrest:hamcrest-all:${versions.hamcrestVersion}"
+    testCompile "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin}"
+
+
 }
