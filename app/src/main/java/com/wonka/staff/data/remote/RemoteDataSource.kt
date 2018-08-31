@@ -25,13 +25,13 @@ class RemoteDataSource @Inject constructor(private val api: WonkaApi) {
                     currentPage = this?.current ?: DEFAULT_CURRENT_PAGE
                     totalPage = this?.total ?: DEFAULT_TOTAL_PAGE
 
-                    return this!!.results // TODO CHECK NULLABILITIES
+                    return this?.results  ?: listOf()
                 }
             else {
                 throw Exception(response.message())
             }
         }
-        return listOf() // TODO SERIOUS?
+        return listOf()
     }
 
     fun getWorker(id: Int): WorkerDetailData {

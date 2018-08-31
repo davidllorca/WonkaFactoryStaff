@@ -22,6 +22,18 @@
     <string name="tag_filter_gemcutter">Gemcutter</string>
     <string name="tag_filter_medic">Medic</string>
     <string name="tag_filter_brewer">Brewer</string>
-
+    <string name="label_about">About</string>
+    <string name="label_description">Description</string>
+    <string name="label_quota">Quota</string>
+    <string name="label_age">Age</string>
+    <string name="label_height">Height</string>
+    <string name="label_bio">Bio</string>
+    <string name="label_country">Country</string>
+    <string name="label_email">E-mail</string>
+    <string name="label_favorite">Favorite</string>
+    <string name="label_color">Color</string>
+    <string name="label_food">Food</string>
+    <string name="label_random">Random</string>
+    <string name="label_song">Song</string>
 
 </resources>

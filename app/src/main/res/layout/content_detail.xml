@@ -10,95 +10,230 @@
     tools:context=".ui.workerdetail.WorkerDetailActivity"
     tools:showIn="@layout/activity_detail">
 
-    <TextView
-        android:id="@+id/tv_detail_description"
+    <LinearLayout
+        android:id="@+id/container_worker_detail_about"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/tv_detail_quota"
+        android:background="@drawable/shape_square_rounded_light"
+        android:orientation="vertical"
+        android:padding="@dimen/default_margin"
+        app:layout_constraintBottom_toTopOf="@+id/container_worker_detail_bio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_about"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_description"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Description" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_quota"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_quota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:ellipsize="end"
+            tools:text="Quota" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_profession"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_profession"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Profession" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_email"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Email" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_country"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Country" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_worker_detail_bio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="@dimen/default_margin_vertical"
+        android:background="@drawable/shape_square_rounded_light"
+        android:orientation="vertical"
+        android:padding="@dimen/default_margin"
+        app:layout_constraintBottom_toTopOf="@id/container_worker_detail_favorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_worker_detail_about">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_bio"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_height"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Height" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_age"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_age"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Age" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_gender"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Gender" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/container_worker_detail_favorite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin_vertical"
+        android:background="@drawable/shape_square_rounded_light"
+        android:orientation="vertical"
+        android:padding="@dimen/default_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_worker_detail_bio">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_favorite"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_color"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Color" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_food"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Food" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_random"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_random"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="15"
+            android:ellipsize="end"
+            tools:text="Ramdom" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_song"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+        <TextView
+            android:id="@+id/tv_detail_song"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="15"
+            android:ellipsize="end"
+            tools:text="Song" />
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/pb_worker_detail"
+        layout="@layout/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="@dimen/default_margin_vertical"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Description" />
-
-    <TextView
-        android:id="@+id/tv_detail_quota"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:maxLines="3"
-        app:layout_constraintBottom_toTopOf="@+id/tv_detail_profession"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_description"
-        tools:text="Quota" />
-
-    <TextView
-        android:id="@+id/tv_detail_profession"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/tv_detail_height"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_quota"
-        tools:text="Profession" />
-
-    <TextView
-        android:id="@+id/tv_detail_height"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/tv_detail_country"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_profession"
-        tools:text="Height" />
-
-    <TextView
-        android:id="@+id/tv_detail_country"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/tv_detail_age"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_height"
-        tools:text="Country" />
-
-    <TextView
-        android:id="@+id/tv_detail_age"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/tv_detail_gender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_country"
-        tools:text="Age" />
-
-    <TextView
-        android:id="@+id/tv_detail_gender"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/tv_detail_favourite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_age"
-        tools:text="Gender" />
-
-    <TextView
-        android:id="@+id/tv_detail_favourite"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/tv_detail_email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_gender"
-        tools:text="Favourite" />
-
-    <TextView
-        android:id="@+id/tv_detail_email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_favourite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:text="Email" />
+        tools:visibility="visible" />
 
 </android.support.constraint.ConstraintLayout>

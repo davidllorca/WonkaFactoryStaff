@@ -102,7 +102,7 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
                         with(chip_filter_brewer) { extractState(this) }))
     }
 
-    private fun loadNextData() { // TODO REMOVE PAGE?
+    private fun loadNextData() {
         // If user is user filter options pagination will be paused
         if (!adapter.isFiltered) {
             presenter.loadWorkers()

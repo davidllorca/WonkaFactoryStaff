@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.Toast
 import com.wonka.staff.R
 import com.wonka.staff.ui.base.ImageLoader
@@ -49,9 +50,10 @@ class WorkerDetailActivity : AppCompatActivity(), WorkerDetailContract.View {
     override fun renderViewSate(state: WorkerDetailViewState) {
         when (state) {
             is WorkerDetailViewState.Loading -> {
-                //pb_workers.visibility = View.VISIBLE TODO
+                showLoadingVisibility(true)
             }
             is WorkerDetailViewState.Result -> {
+                showLoadingVisibility(false)
                 with(state.workerDetail) {
                     tv_detail_description.text = this.description
                     tv_detail_quota.text = this.quota
@@ -63,13 +65,24 @@ class WorkerDetailActivity : AppCompatActivity(), WorkerDetailContract.View {
                     tv_detail_age.text = this.age.toString()
                     tv_detail_gender.text = this.gender
                     tv_detail_email.text = this.email
-                    // TODO display favorite
+                    with(this.favorite) {
+                        tv_detail_food.text = this.food
+                        tv_detail_color.text = this.color
+                        tv_detail_random.text = this.randomString
+                        tv_detail_song.text = this.song
+                    }
                 }
             }
             is WorkerDetailViewState.Error -> {
+                showLoadingVisibility(false)
                 Toast.makeText(this, state.error.message, Toast.LENGTH_LONG).show()
             }
         }
+
+    }
+
+    private fun showLoadingVisibility(visible: Boolean) {
+        pb_worker_detail.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
     companion object {
