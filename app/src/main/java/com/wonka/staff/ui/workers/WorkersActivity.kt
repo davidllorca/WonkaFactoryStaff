@@ -144,10 +144,14 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
 
     override fun onClickWorker(id: Int) {
         WorkerDetailActivity.getCallingIntent(this, id)
-                .let { startActivity(it) }
+                .let {
+                    // TODO val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, iv_worker_image as View, "avatar")
+                    //startActivity(it, options.toBundle())
+                    startActivity(it)
+                }
     }
 
     companion object {
-        private const val N_GRID_COLUMNS = 2
+        private const val N_GRID_COLUMNS = 1
     }
 }

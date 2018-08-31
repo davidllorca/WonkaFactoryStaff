@@ -14,4 +14,26 @@ interface WorkerDetailContract {
         fun loadWorkerDetail(id: Int)
 
     }
+
+    interface WorkerDetailViewObject {
+        val name: String
+        val gender: String
+        val profession: String
+        val avatarUrl: String
+        val description: String
+        val quota: String
+        val height: Int
+        val country: String
+        val age: Int
+        val favorite: FavoriteViewObject
+        val email: String
+
+        interface FavoriteViewObject {
+            val color: String
+            val food: String
+            val randomString: String
+            val song: String
+        }
+    }
+
 }

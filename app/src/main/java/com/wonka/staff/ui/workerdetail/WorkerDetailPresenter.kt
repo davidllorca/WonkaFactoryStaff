@@ -3,6 +3,7 @@ package com.wonka.staff.ui.workerdetail
 import android.util.Log
 import com.wonka.staff.domain.GetWorkerDetailUseCase
 import com.wonka.staff.ui.di.ActivityScope
+import com.wonka.staff.ui.model.toWorkerDetailView
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -17,7 +18,7 @@ class WorkerDetailPresenter @Inject constructor(
 
     override fun loadWorkerDetail(id: Int) {
         add(useCase.execute(GetWorkerDetailUseCase.Params(id))
-                .subscribe({ result -> mView?.renderViewSate(WorkerDetailViewState.Result(result.worker)) },
+                .subscribe({ result -> mView?.renderViewSate(WorkerDetailViewState.Result(result.worker.toWorkerDetailView())) },
                         { error -> Log.e("WorkerDetailPresenter", "Error getting details", error) }))
     }
 

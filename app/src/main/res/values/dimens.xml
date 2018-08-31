@@ -1,6 +1,7 @@
 <resources>
-    <dimen name="default_margin_horizontal">8dp</dimen>
-    <dimen name="default_margin_vertical">8dp</dimen>
+    <dimen name="default_margin">8dp</dimen>
+    <dimen name="default_margin_horizontal">@dimen/default_margin</dimen>
+    <dimen name="default_margin_vertical">@dimen/default_margin</dimen>
     <dimen name="small_margin_vertical">4dp</dimen>
     <dimen name="small_margin_horizontal">4dp</dimen>
     <dimen name="big_margin_horizontal">16dp</dimen>

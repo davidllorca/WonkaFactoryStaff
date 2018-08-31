@@ -2,82 +2,103 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/default_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.workerdetail.WorkerDetailActivity"
     tools:showIn="@layout/activity_detail">
 
     <TextView
         android:id="@+id/tv_detail_description"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_detail_quota"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Description" />
 
     <TextView
         android:id="@+id/tv_detail_quota"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="53dp"
+        android:maxLines="3"
+        app:layout_constraintBottom_toTopOf="@+id/tv_detail_profession"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_description"
         tools:text="Quota" />
 
     <TextView
         android:id="@+id/tv_detail_profession"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="88dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_detail_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_quota"
         tools:text="Profession" />
 
     <TextView
         android:id="@+id/tv_detail_height"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Height"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="121dp" />
+        app:layout_constraintBottom_toTopOf="@+id/tv_detail_country"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_profession"
+        tools:text="Height" />
 
     <TextView
         android:id="@+id/tv_detail_country"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="152dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_detail_age"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_height"
         tools:text="Country" />
 
     <TextView
         android:id="@+id/tv_detail_age"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Age"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="182dp" />
+        app:layout_constraintBottom_toTopOf="@+id/tv_detail_gender"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_country"
+        tools:text="Age" />
 
     <TextView
         android:id="@+id/tv_detail_gender"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="211dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_detail_favourite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_age"
         tools:text="Gender" />
 
     <TextView
         android:id="@+id/tv_detail_favourite"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="245dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_detail_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_gender"
         tools:text="Favourite" />
 
     <TextView
         android:id="@+id/tv_detail_email"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="279dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_favourite"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:text="Email" />
 
 </android.support.constraint.ConstraintLayout>
