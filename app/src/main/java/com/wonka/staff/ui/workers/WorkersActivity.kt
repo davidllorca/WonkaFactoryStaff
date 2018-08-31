@@ -112,7 +112,7 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
     override fun onResume() {
         super.onResume()
         presenter.attach(this)
-        if(adapter.isInitialized) {
+        if (adapter.isInitialized) {
             loadNextData()
         }
     }
@@ -139,19 +139,15 @@ class WorkersActivity : AppCompatActivity(), WorkersContract.View, WorkersAdapte
     }
 
     private fun showLoadingVisibility(visible: Boolean) {
-        pb_workers.visibility = if(visible) View.VISIBLE else View.GONE
+        pb_workers.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
     override fun onClickWorker(id: Int) {
         WorkerDetailActivity.getCallingIntent(this, id)
-                .let {
-                    // TODO val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, iv_worker_image as View, "avatar")
-                    //startActivity(it, options.toBundle())
-                    startActivity(it)
-                }
+                .let { startActivity(it) }
     }
 
     companion object {
-        private const val N_GRID_COLUMNS = 1
+        private const val N_GRID_COLUMNS = 2
     }
 }

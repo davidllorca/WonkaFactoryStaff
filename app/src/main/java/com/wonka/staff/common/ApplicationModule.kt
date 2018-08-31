@@ -1,7 +1,15 @@
 package com.wonka.staff.common
 
 import android.app.Application
+import android.content.Context
+import dagger.Binds
 import dagger.Module
 
+
 @Module
-class ApplicationModule(private val application: Application)
+abstract class ApplicationModule {
+
+    @Binds
+    internal abstract fun bindContext(application: Application): Context
+
+}
