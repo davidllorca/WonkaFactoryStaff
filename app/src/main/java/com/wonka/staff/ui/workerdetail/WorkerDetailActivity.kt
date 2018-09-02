@@ -52,7 +52,7 @@ class WorkerDetailActivity : AppCompatActivity(), WorkerDetailContract.View {
             is WorkerDetailViewState.Loading -> {
                 showLoadingVisibility(true)
             }
-            is WorkerDetailViewState.Result -> {
+            is WorkerDetailViewState.Results -> {
                 showLoadingVisibility(false)
                 with(state.workerDetail) {
                     tv_detail_description.text = this.description

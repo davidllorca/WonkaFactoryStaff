@@ -26,7 +26,7 @@ class WorkerDetailPresenter @Inject constructor(
                 }
                 .doAfterTerminate { renderState() }
                 .subscribe({ result ->
-                    mViewState = WorkerDetailViewState.Result(result.worker.toWorkerDetailView())
+                    mViewState = WorkerDetailViewState.Results(result.worker.toWorkerDetailView())
                 }, { error ->
                     mViewState = WorkerDetailViewState.Error(error)
                     Log.e("WorkerDetailPresenter", "Error getting details", error) }))
