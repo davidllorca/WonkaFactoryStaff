@@ -1,6 +1,6 @@
-# Wonka's factory staff app
+# Wonka's factory staff app [Test project]
 
-### Libraries
+## Libraries
 
 - Dagger2: Dependency injection framework.
 - Retrofit2: Definition remote API.
